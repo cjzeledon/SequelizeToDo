@@ -1,0 +1,48 @@
+<h2>Giant List of Todos</h2>
+
+<form method="post" action="/mylist">
+    <input type="text" name="things" placeholder="Add A New Todo">
+    <input type="submit" value="Add Todos">
+</form>
+
+<form method="POST" action="/deleteall/{{ id }}">
+  <input type="submit" value="Delete all completed todos">
+</form>
+
+<h3>What is Done and What is Not Done</h3>
+
+<ul>
+  {{ #mytodos }}
+  <li>
+
+
+    {{ #completed }}
+    <p>{{ todos }}</p>
+      <form method="POST" action="/new/{{ id }}">
+        <input type="submit" value="Completed">
+      </form>
+      <form method="POST" action="/delete/{{ id }}">
+        <input type="submit" value="Delete">
+      </form>
+      <form method="POST" action="/update/{{ id }}">
+        <input type="text" name="updateThis" placeholder="Update Todos">
+        <input type="submit" value="Update">
+      </form>
+    {{ /completed}}
+    {{ ^completed }}
+        <p><s>{{ todos }}</s></p>
+      <form method="POST" action="/done/{{ id }}">
+        <input type="submit" value="Incomplete">
+      </form>
+      <form method="POST" action="/delete/{{ id }}">
+        <input type="submit" value="Delete">
+      </form>
+      <form method="POST" action="/update/{{ id }}">
+        <input type="text" name="updateThis" placeholder="Update Todos">
+        <input type="submit" value="Update">
+      </form>
+    {{ /completed }}
+
+  </li>
+  {{ /mytodos }}
+</ul>
