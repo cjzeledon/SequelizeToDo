@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+
+body{
+  background-color: #ffecd8;
+}
+
+h2 {
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #aa9d90;
+  background-color: white;
+  border: 10px solid white;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header{
+  text-align: center;
+}
+
+#addTodo, #deleteAll{
+  display: inline-block;
+}
+
+#addTodo input[type="text"]{
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 20px;
+  width: 200px;
+  padding: 5px;
+}
+
+#deleteAll input[type="submit"], #addTodo input[type="submit"]{
+  background-color: #aa9d90;
+  border: 1px solid #aa9d90;
+  height: 30px;
+  border-radius: 8px;
+}
+
+h3{
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+}
+
+p{
+  font-family: sans-serif,serif;
+  font-size: 13px;
+}
+
+ul{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li{
+  list-style-type: none;
+  background-color: #d5cec8;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #d5cec8;
+  margin: 5px;
+}
+
+.list {
+  display: inline-block;
+}
+
+.list input[type="text"]{
+  border: 1px solid white;
+  border-radius: 8px;
+  height: 15px;
+}
+
+.list input[type="submit"]{
+  background-color: #aa9d90;
+  border: 1px solid #aa9d90;
+  border-radius: 8px;
+}

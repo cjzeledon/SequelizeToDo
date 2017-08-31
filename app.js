@@ -9,6 +9,7 @@ app.engine('mustache', mustache());
 app.set('views', './views');
 app.set('view engine', 'mustache');
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.static("views"));
 
 /************** TODOS SCHEMA **************/
 
@@ -47,7 +48,7 @@ app.get ('/', function(req, res){
 app.post('/mylist', function(req, res){
   List.create({
     todos: req.body.things,
-    completed: false
+    completed: true
   }).then(function(){
     res.redirect('/');
   });
@@ -120,26 +121,28 @@ app.post('/delete/:list_id', function(req, res){
 });
 
 //delete all completed todos
-app.post('/deleteall/:list_completed', function(req, res){
-  const id = parseInt(req.params.list_completed);
+app.post('/deleteall', function(req, res){
 
-// List.destroy({
-//   where: {
-//     completed: true,
-//   },
-// }).then(function() {
-//     res.redirect('/');
-//   });
-
-  List.destroy({
-    where: { completed: true },
-    truncate: true
-  }).then(affectedRows => {
-    return Find.findAll();
-  }).then(function(){
+List.destroy({
+  where: {
+    completed: false,
+  },
+}).then(function() {
     res.redirect('/');
   });
 
+  // List.destroy({
+  //   where: { completed: true },
+  //   truncate: true
+  // }).then(affectedRows => {
+  //   return Find.findAll();
+  // }).then(function(){
+  //   res.redirect('/');
+  // });
+
 });
+
+
+
 
 app.listen(3000);

@@ -1,48 +1,67 @@
-<h2>Giant List of Todos</h2>
+<!DOCTYPE html>
+<html>
 
-<form method="post" action="/mylist">
-    <input type="text" name="things" placeholder="Add A New Todo">
-    <input type="submit" value="Add Todos">
-</form>
+<head>
+  <title>
+    Giant List of Todos
+  </title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 
-<form method="POST" action="/deleteall/{{ id }}">
-  <input type="submit" value="Delete all completed todos">
-</form>
+<body>
 
-<h3>What is Done and What is Not Done</h3>
+  <h2>Giant List of Todos</h2>
 
-<ul>
-  {{ #mytodos }}
-  <li>
+  <header>
+    <form method="post" action="/mylist" id="addTodo">
+        <input type="text" name="things" placeholder="Add A New Todo">
+        <input type="submit" value="Add Todos">
+    </form>
 
+    <form method="POST" action="/deleteall" id="deleteAll">
+      <input type="submit" value="Delete all completed todos">
+    </form>
+  </header>
 
-    {{ #completed }}
-    <p>{{ todos }}</p>
-      <form method="POST" action="/new/{{ id }}">
-        <input type="submit" value="Completed">
-      </form>
-      <form method="POST" action="/delete/{{ id }}">
-        <input type="submit" value="Delete">
-      </form>
-      <form method="POST" action="/update/{{ id }}">
-        <input type="text" name="updateThis" placeholder="Update Todos">
-        <input type="submit" value="Update">
-      </form>
-    {{ /completed}}
-    {{ ^completed }}
-        <p><s>{{ todos }}</s></p>
-      <form method="POST" action="/done/{{ id }}">
-        <input type="submit" value="Incomplete">
-      </form>
-      <form method="POST" action="/delete/{{ id }}">
-        <input type="submit" value="Delete">
-      </form>
-      <form method="POST" action="/update/{{ id }}">
-        <input type="text" name="updateThis" placeholder="Update Todos">
-        <input type="submit" value="Update">
-      </form>
-    {{ /completed }}
+  <h3>What is Done and What is Not Done</h3>
 
-  </li>
-  {{ /mytodos }}
-</ul>
+  <main>
+    <ul>
+      {{ #mytodos }}
+      <li>
+        {{ #completed }}
+          <p>{{ todos }}</p>
+
+          <form method="POST" action="/new/{{ id }}" class="list">
+            <input type="submit" value="Completed">
+          </form>
+
+          <form method="POST" action="/delete/{{ id }}" class="list">
+            <input type="submit" value="Delete">
+          </form>
+
+          <form method="POST" action="/update/{{ id }}" class="list">
+            <input type="text" name="updateThis" placeholder="Update Todos">
+            <input type="submit" value="Update">
+          </form>
+        {{ /completed}}
+
+        {{ ^completed }}
+            <p><s>{{ todos }}</s></p>
+
+          <form method="POST" action="/done/{{ id }}" class="list">
+            <input type="submit" value="Incomplete">
+          </form>
+
+          <form method="POST" action="/delete/{{ id }}" class="list">
+            <input type="submit" value="Delete">
+          </form>
+        {{ /completed }}
+
+      </li>
+      {{ /mytodos }}
+    </ul>
+</main>
+
+</body>
+</html>
